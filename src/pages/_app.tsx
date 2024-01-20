@@ -1,6 +1,16 @@
+import { SupabaseProvider } from "@/contexts/supabase";
 import "@/styles/globals.css";
+import { ChakraProvider } from "@chakra-ui/react";
 import type { AppProps } from "next/app";
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
-}
+const App = ({ Component, pageProps }: AppProps) => {
+  return (
+    <SupabaseProvider>
+      <ChakraProvider>
+        <Component {...pageProps} />
+      </ChakraProvider>
+    </SupabaseProvider>
+  );
+};
+
+export default App;
